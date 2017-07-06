@@ -36,7 +36,8 @@ class Tablero():
         
     
     def mostrarTablero(self, sc):
-        sc.send('    a    b    c    d    e    f    g    h')
+        sc.send('    A    B    C    D    E    F    G    H')
+        time.sleep(0.01)
         for i in range (8):
             numeroFila = str(8 - i) + ' '
             fila = str(self.matriz[i])
@@ -46,6 +47,19 @@ class Tablero():
     def getFicha(self, i, j):
         return self.matriz[i][j]
     def setFicha(self, i, j, color):
-        self.matriz[i][j] = color            
-            
+        self.matriz[i][j] = color   
+    def verEstadoNegras(self):
+        self.contadorNegras = 0
+        for i in range (8):
+            for j in range(8):
+                if (self.matriz[i][j] == 'n' or self.matriz[i][j] == 'N'):
+                    self.contadorNegras = self.contadorNegras + 1
+        return self.contadorNegras
+    def verEstadoBlancas(self):
+        self.contadorBlancas = 0
+        for i in range (8):
+            for j in range(8):
+                if (self.matriz[7-i][7-j] == 'b' or self.matriz[7-i][7-j] == 'B'):
+                    self.contadorBlancas = self.contadorBlancas + 1
+        return self.contadorBlancas
         
